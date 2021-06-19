@@ -2,6 +2,8 @@ package com.interview.codingchallenge.ui
 
 import android.app.SearchManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
@@ -15,7 +17,6 @@ import com.interview.codingchallenge.R
 import com.interview.codingchallenge.ui.RxSearchObservable.fromView
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_main.*
-
 class PhotosActivity : AppCompatActivity() {
     private val compositeDisposable = CompositeDisposable()
     private val adapterSearchPhoto by lazy {
@@ -31,6 +32,8 @@ class PhotosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         ed_search.apply {
             setSearchableInfo(
                 (getSystemService(SEARCH_SERVICE) as SearchManager).getSearchableInfo(
@@ -101,6 +104,7 @@ class PhotosActivity : AppCompatActivity() {
             }
         })
 
+       
         photosViewModel.photosLoadingLiveData.observe(this, { (isLoading, pageNumber) ->
             this.isLoading = isLoading
             with(adapterSearchPhoto) {

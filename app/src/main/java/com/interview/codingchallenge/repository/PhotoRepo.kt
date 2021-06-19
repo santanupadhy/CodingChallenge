@@ -7,13 +7,5 @@ import io.reactivex.Single
 
 interface PhotoRepo {
 
-    fun fetchSearchImages(query: String, pageNumber: Int): Single<PhotosSearchResponse> {
-        return WebClient.client.fetchSearchImages(
-            hashMapOf(
-                "text" to query,
-                "page" to pageNumber,
-                "per_page" to PhotosUtil.PAGE_SIZE
-            )
-        )
-    }
+    fun fetchSearchImages(query: String, pageNumber: Int): Single<PhotosSearchResponse>
 }

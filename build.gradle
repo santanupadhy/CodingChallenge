@@ -7,6 +7,9 @@ buildscript {
         jcenter()
         google()
         mavenCentral()
+        maven{
+            url "https://dl.bintray.com/walkover/Android-Libs"
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.2.1"
@@ -22,6 +25,9 @@ allprojects {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        maven{
+            url "https://dl.bintray.com/walkover/Android-Libs"
+        }
     }
 }
 

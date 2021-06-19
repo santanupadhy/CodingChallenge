@@ -3,7 +3,8 @@ package com.interview.codingchallenge.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.interview.codingchallenge.PhotosUtil.DEBOUNCE_DURATION
-import com.interview.codingchallenge.data.PhotosRepository
+import com.interview.codingchallenge.repository.PhotoRepo
+import com.interview.codingchallenge.repository.PhotosRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -11,7 +12,8 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class PhotosViewModel : BaseViewModel() {
-    private val repo = PhotosRepository()
+    private val repo: PhotoRepo = PhotosRepository()
+
     private val mutablePhotosListLiveData = MutableLiveData<PhotosUiModel>()
     private val loaderLiveData = MutableLiveData<Pair<Boolean, Int>>()
     val photosListLiveData: LiveData<PhotosUiModel> = mutablePhotosListLiveData
